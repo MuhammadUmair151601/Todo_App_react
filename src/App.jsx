@@ -17,6 +17,13 @@ const App = () => {
   const [title, settitle] = useState("");
   const [detail, setdetail] = useState("");
   const [task, settask] = useState([]);
+
+  const deleteTask = (idx) => {
+  const updatedTasks = [...task];  
+  updatedTasks.splice(idx, 1);     
+  settask(updatedTasks);           
+    
+  }
   return (
     <div className="min-h-screen bg-zinc-800">
       <div className="w-full py-3 bg-gray-700 flex justify-center items-center ">
@@ -69,7 +76,7 @@ const App = () => {
                   <input className="w-5 h-5 cursor-pointer" type="checkbox" />
                   <h1 className="font-bold text-xl">{elem.title}</h1>
                   <p>{elem.detail}</p>
-                 <button className="bg-red-600 cursor-pointer text-white p-1 rounded-[5px]">Delete</button>
+                 <button onClick={() => deleteTask(idx)} className="bg-red-600 cursor-pointer text-white p-1 rounded-[5px]">Delete</button>
                 </div>
               )
              })}
