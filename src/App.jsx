@@ -1,31 +1,34 @@
 import React, { useState } from "react";
 
 const App = () => {
-  const submitHandler = (e) => {
-    e.preventDefault();
-    // const alltask = [...task];
-    // alltask.slice(idx, 1);
-    // settask(alltask);
-    console.log("form submitted:");
-    console.log(title, detail);
-     settitle("")
-     setdetail("")
+ const submitHandler = (e) => {
+  e.preventDefault();
+
+  const newTask = {
+    title: title,
+    detail: detail,
   };
+
+  settask([...task, newTask]);
+
+  settitle("");
+  setdetail("");
+};
   const [title, settitle] = useState("");
   const [detail, setdetail] = useState("");
-  // const [task, settask] = useState([]);
+  const [task, settask] = useState([]);
   return (
     <div className="min-h-screen bg-zinc-800">
-      <div className="w-full py-7 bg-cyan-600 flex justify-center items-center ">
+      <div className="w-full py-3 bg-cyan-600 flex justify-center items-center ">
         <h1 className="text-4xl font-bold text-white">TODO APP</h1>
       </div>
       <center>
-        <div className="w-100 h-70 bg-gray-600 mt-5 rounded-2xl  opacity-80">
+        <div className="w-100 h-60  bg-gray-600 mt-5 rounded-2xl  opacity-80">
           <form
             onSubmit={(e) => {
               submitHandler(e);
             }}
-            className="flex flex-col justify-center items-center gap-5 py-10"
+            className="flex flex-col justify-center items-center gap-5 py-4"
           >
             <input
               className="bg-gray-300 font-bold w-80 outline-none py-3 rounded-[5px] px-5 text-black text-lg"
@@ -47,13 +50,29 @@ const App = () => {
               setdetail(e.target.value);
             }}
             ></textarea>
-            <button
-              onClick={submitHandler}
+            <button type="submit"
               className="bg-green-500 active:scale-95 text-white text-lg font-bold rounded-[5px] py-1 px-8"
             >
               ADD TASK
             </button>
           </form>
+        </div>
+        <div className="bg-gray-700 h-100 w-100 rounded-2xl mt-5">
+         <h1 className="text-3xl font-bold text-white mt-4">My Tasks</h1>
+         <div className="flex flex-wrap">
+             {task.map((elem,idx)=>{
+              return(
+                <div
+                key={idx}
+                className="bg-white w-90 h-15 ml-5 mt-5 flex justify-between items-center p-4 ronded-2xl">
+                  <input className="w-5 h-5" type="checkbox" />
+                  <h1 className="font-bold text-xl">{elem.title}</h1>
+                  <p>{elem.detail}</p>
+                 <button>Delete</button>
+                </div>
+              )
+             })}
+         </div>
         </div>
       </center>
     </div>
