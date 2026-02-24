@@ -29,8 +29,8 @@ const App = () => {
       <div className="w-full py-3 bg-gray-700 flex justify-center items-center ">
         <h1 className="text-4xl font-bold text-white">TODO APP</h1>
       </div>
-      <center className="flex flex-col lg:flex-row justify-center gap-20 items-center ">
-        <div className="w-110 h-120  bg-gray-700 mt-5 rounded-2xl  opacity-80">
+      <center className="flex flex-col lg:flex-row  justify-center gap-5 lg:gap-20 items-center ">
+        <div className="w-110 h-70 lg:h-120  bg-gray-700 mt-5 rounded-2xl  opacity-80">
           <form
             onSubmit={(e) => {
               submitHandler(e);
