@@ -23,7 +23,7 @@ const App = () => {
         <h1 className="text-4xl font-bold text-white">TODO APP</h1>
       </div>
       <center>
-        <div className="w-100 h-60  bg-gray-600 mt-5 rounded-2xl  opacity-80">
+        <div className="w-110 h-60  bg-gray-600 mt-5 rounded-2xl  opacity-80">
           <form
             onSubmit={(e) => {
               submitHandler(e);
@@ -31,7 +31,7 @@ const App = () => {
             className="flex flex-col justify-center items-center gap-5 py-4"
           >
             <input
-              className="bg-gray-300 font-bold w-80 outline-none py-3 rounded-[5px] px-5 text-black text-lg"
+              className="bg-gray-300 font-bold w-90 outline-none py-3 rounded-[5px] px-5 text-black text-lg"
               type="text"
               placeholder="Title..."
               value={title}
@@ -41,9 +41,10 @@ const App = () => {
             }}
             />
             <textarea
-              className="bg-gray-300 w-80 outline-none py-3 rounded-[5px] px-5 text-black text-lg"
+              className="bg-gray-300 w-90 outline-none py-3 rounded-[5px] px-5 text-black text-lg"
               name=""
               id=""
+              maxLength={30}
               placeholder="Write Detail....."
               value={detail}
               onChange={(e) => {
@@ -51,24 +52,24 @@ const App = () => {
             }}
             ></textarea>
             <button type="submit"
-              className="bg-green-500 active:scale-95 text-white text-lg font-bold rounded-[5px] py-1 px-8"
+              className="bg-green-500 active:scale-95 text-white text-lg font-bold rounded-[5px] py-1 px-34"
             >
               ADD TASK
             </button>
           </form>
         </div>
-        <div className="bg-gray-700 h-100 w-100 rounded-2xl mt-5">
+        <div className="bg-gray-700 h-100 w-110 rounded-2xl mt-5">
          <h1 className="text-3xl font-bold text-white mt-4">My Tasks</h1>
          <div className="flex flex-wrap">
              {task.map((elem,idx)=>{
               return(
                 <div
                 key={idx}
-                className="bg-white w-90 h-15 ml-5 mt-5 flex justify-between items-center p-4 ronded-2xl">
+                className="bg-white w-100 h-15 ml-5 mt-5 flex justify-between items-center p-4  rounded-[10px]">
                   <input className="w-5 h-5" type="checkbox" />
                   <h1 className="font-bold text-xl">{elem.title}</h1>
                   <p>{elem.detail}</p>
-                 <button>Delete</button>
+                 <button className="bg-red-600 text-white p-1 rounded-[5px]">Delete</button>
                 </div>
               )
              })}
