@@ -19,11 +19,11 @@ const App = () => {
   const [task, settask] = useState([]);
   return (
     <div className="min-h-screen bg-zinc-800">
-      <div className="w-full py-3 bg-cyan-600 flex justify-center items-center ">
+      <div className="w-full py-3 bg-gray-700 flex justify-center items-center ">
         <h1 className="text-4xl font-bold text-white">TODO APP</h1>
       </div>
-      <center>
-        <div className="w-110 h-60  bg-gray-600 mt-5 rounded-2xl  opacity-80">
+      <center className="flex flex-col lg:flex-row justify-center gap-20 items-center ">
+        <div className="w-110 h-120  bg-gray-700 mt-5 rounded-2xl  opacity-80">
           <form
             onSubmit={(e) => {
               submitHandler(e);
@@ -58,7 +58,7 @@ const App = () => {
             </button>
           </form>
         </div>
-        <div className="bg-gray-700 h-100 w-110 rounded-2xl mt-5">
+        <div className="scroll bg-gray-700 h-120 overflow-auto w-110 rounded-2xl mt-5">
          <h1 className="text-3xl font-bold text-white mt-4">My Tasks</h1>
          <div className="flex flex-wrap">
              {task.map((elem,idx)=>{
@@ -66,10 +66,10 @@ const App = () => {
                 <div
                 key={idx}
                 className="bg-white w-100 h-15 ml-5 mt-5 flex justify-between items-center p-4  rounded-[10px]">
-                  <input className="w-5 h-5" type="checkbox" />
+                  <input className="w-5 h-5 cursor-pointer" type="checkbox" />
                   <h1 className="font-bold text-xl">{elem.title}</h1>
                   <p>{elem.detail}</p>
-                 <button className="bg-red-600 text-white p-1 rounded-[5px]">Delete</button>
+                 <button className="bg-red-600 cursor-pointer text-white p-1 rounded-[5px]">Delete</button>
                 </div>
               )
              })}
